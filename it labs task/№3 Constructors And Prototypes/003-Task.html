@@ -1,0 +1,54 @@
+﻿﻿<!--
+
+    Реализуйте конструктор Calculator, который создает расширяемые объекты-калькуляторы.
+    По умолчанию калькулятор должен поддерживать две операции: "+" и "-" (см. строку 24 и 25)
+
+    Добавьте в калькулятор метод addOperation для добавления новых операций (см. строку 27 и 28).
+
+-->
+
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <script>
+
+        // Конструктор калькуляторов
+        function Calculator() {
+            var oper = {
+                "+" : function (a,b){return a+b;},
+                "-" : function (a,b){return a-b;}
+            }
+
+            
+            this.getOperation = function (name) {
+                return oper[name];
+            }
+
+            this.addOperation = function(operation,func){
+                oper[operation] = func;
+            }
+
+            this.calculate = function(str){
+                var v = str.split(' ');
+                var a = v[0];
+                var b = v[2];
+                var oper = v[1];
+                return this.getOperation(v[1])(+a,+b);
+            }
+        }
+
+        var calc = new Calculator();
+
+        alert(calc.calculate("3 + 7")); // Должно выводиться 10
+        alert(calc.calculate("7 - 3")); // Должно выводиться 4
+
+         calc.addOperation("*", function (a, b) { return a * b; });
+         calc.addOperation("/", function (a, b) { return a / b; });
+
+         alert(calc.calculate("3 * 7")); // Должно выводиться 21
+         alert(calc.calculate("8 / 4")); // Должно выводиться 2*/
+    </script>
+</body>
+</html>

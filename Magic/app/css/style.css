@@ -1,0 +1,35 @@
+﻿body{
+    background-color: lightblue;
+}
+
+#item{
+    display: block;
+    width: 350px;
+    height: 340px;
+    border: 5px solid;
+    border-color: rgb(0,0,0);
+    border-radius: 20px;
+    text-align: center;
+    padding-top: 10px;
+    background-repeat: no-repeat;
+    background-image : url('');
+    background-size: 100% 100%;
+    margin: 0 auto;
+}
+
+#proc{
+    color: #666;
+    position: absolute;
+    margin: 15px 0 0 235px;
+}
+
+#polosa{
+    width: 500px; 
+    border: 1px solid #666;
+    margin: 0 auto;
+}
+
+#progress{
+    width: 0;
+    height: 50px;
+}

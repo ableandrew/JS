@@ -1,0 +1,43 @@
+﻿<!--  
+    
+    Создайте кнопку, убегающую от пользователя, если тот хочет её нажать.
+    
+-->
+
+<html>
+
+<head>
+	<title>Funny Button</title>
+<style>
+	#button{
+		width:50px;
+		height: 50px;
+		background: green;
+		position: absolute;
+		top:  0px;
+		left: 0px;
+	}
+</style>
+
+
+</head>
+
+<body>
+	<button id="button">Click Me</button>
+
+	<script>
+		var elem = document.getElementById("button");
+
+		function funny (){
+			var top = Math.floor(Math.random(0,500)*(500-0))+0;
+			var left = Math.floor(Math.random(0,1000)*(1000-0))+0;
+			elem.style.top = top;
+			elem.style.left = left;
+		}
+
+		elem.addEventListener("mouseover",funny);
+
+	</script>
+</body>
+
+</html>

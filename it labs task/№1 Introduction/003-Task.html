@@ -1,0 +1,55 @@
+<!--
+
+   Реализуйте функцию findStringOnce таким образом, чтобы она возвращала массив, 
+   состоящий только из уникальных элементов исходного массива. 
+    
+   Попробуйте добиться максимальной производительности.
+   Для этого используйте объект obj(строка № 18), а так же метод Object.Keys(строка № 22).
+
+-->
+
+<html>
+<head>
+    <title>Интеграция JavaScript</title>
+
+    <script type="text/javascript">
+
+       /* function findStringOnce(arr) { //честно говоря, пока не имею понятия что эта конструкция из себя представляет))
+            var obj = {};
+
+            //... Ваш код
+
+            return Object.keys(obj);
+        }*/
+        var a = new Array();
+        var initialArr = ["First", "Second", "First", "Third", "Fourth", "Fourth"];
+        var b=0; //счетчик
+
+
+function findStringOnce(initialArr){
+        for(var i=0; i<initialArr.length;i++){
+        var b=0;
+          for (var j=0; j<(initialArr.length);j++){
+            if (i===j){continue;} //пропуск проверки самого себя
+             if (initialArr[i]===initialArr[j]){
+              b++;
+             }
+          }
+          if(b===0){ //если элемент ни разу не повторяется, записываем в результ. массив
+            a.push(initialArr[i]);
+          }
+        }
+        document.write (a);
+        return a;
+      }
+       var strings = findStringOnce(initialArr);
+
+        console.log("Initial array: " + initialArr.join(', '));
+        console.log("</br>");
+        console.log("Unique elements: " + strings.join(', '));
+
+    </script>
+</head>
+<body>
+</body>
+</html>

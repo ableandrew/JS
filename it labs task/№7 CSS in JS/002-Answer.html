@@ -1,0 +1,41 @@
+﻿<!-- 
+   
+    Создайте анимацию для элемента div с id="plane".
+    При нажатии на этот элемент он должен перемещаться влево на 500 px. Продолжительность анимации определите на свое усмотрение. 
+     
+-->
+<html>
+<head>
+    <title></title>
+
+    <style>
+	    .example_block {
+            width: 500px;
+            height: 250px;
+            position: relative;
+            background-image: url(images/plane.png);
+            
+           
+        }
+    </style>
+</head>
+<body>
+    <script>
+        function move(elem) {
+            var leftPos = 0;
+
+            function animated (){
+                leftPos++;
+                elem.style.left = leftPos + "px"
+
+                    if (leftPos == 500){
+                        clearInterval(timer);
+                    }    
+            }
+                 
+            var timer = setInterval(animated, 20);          
+        }
+</script>
+    <div id="plane" class="example_block" onclick="move(getElementById('plane'))"></div>
+</body>
+</html>

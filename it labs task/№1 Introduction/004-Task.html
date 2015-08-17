@@ -1,0 +1,52 @@
+﻿<!--
+
+   Создайте многомерный массив, который сможет служить в качесве таблицы умножения. 
+   См. код. 
+
+-->
+
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <script>
+
+  
+
+           /* Создание массива значения */
+           function pifagorTable(a,b){
+           var mulTable = [];
+        for(var i=1;i<a;i++){
+            mulTable[i]=[];
+            for(var j=1;j<b;j++){
+                mulTable[i][j]=i*j;
+            }
+        }
+    /*Вывод таблицы пифагора в графическом виде*/
+    document.write("<table bordercolor=black border=1 CELLSPACING=0 width=40% bgcolor=#3CB371>")
+        for (var i = 1; i < mulTable.length; i++) {
+             document.write("<tr>");
+                for (var j = 1; j < mulTable[i].length; j++) {
+                     document.write("<td align='center' onMouseOver=this.style.background='#FFCC33' onMouseOut=this.style.background='#3CB371'>" + mulTable[i][j] + "</td>");
+                 }
+            document.write("</tr>");
+        }
+    document.write("</table>")
+    return mulTable;
+}
+
+var mulTable = pifagorTable(50,52);
+
+
+
+        console.log("3 * 9 = " + mulTable[3][9]); // Должно вывести в документ 3 * 9 = 27
+        console.log("</br>");
+        console.log("5 * 7 = " + mulTable[5][7]); // Должно вывести в документ 5 * 7 = 35
+        console.log("15 * 47 = " + mulTable[15][47]); // Должно вывести в документ 5 * 7 = 35
+
+        // ....
+
+    </script>
+</body>
+</html>

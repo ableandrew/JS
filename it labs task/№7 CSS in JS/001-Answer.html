@@ -1,0 +1,33 @@
+﻿<!-- 
+
+    Создайте анимацию для элемента span с id = urgent.
+    При запуске примера вокруг этого элемента должна мерцать красная рамка. 
+
+-->
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <div style="padding: 10px">
+        <span id="warning">Внимание!</span>
+    </div>
+    <script>
+        document.getElementById("warning").style.border = "solid red 2px";
+
+        setInterval(function(){
+        	document.getElementById("warning").style.border = "solid white 2px";
+
+        	setTimeout(function(){
+        		document.getElementById("warning").style.border = "solid red 2px";
+        		},400);
+        },600);
+
+        
+        
+
+
+        
+    </script>
+</body>
+</html>

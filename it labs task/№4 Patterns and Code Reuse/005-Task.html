@@ -1,0 +1,68 @@
+﻿<!-- 
+     Реализуйте шаблон "Совместное использование прототипа" на примере классов Animal и Cat. 
+     Докажите что объекты будут использовать один и тот же прототип и если дочерний объек поменяет прототип это скажется на родительском объеке.
+-->
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <script>
+       function Animal (name, age){
+        	this.name = name;
+        	this.age = age;
+        }
+        Animal.prototype.swim = function (){
+        	console.log ("I am a " + this.name + " I can swim");
+        }
+        Animal.prototype.run = function (){
+        	console.log ("I am a " + this.name + " I can run");
+        }
+        Animal.prototype.fly = function (){
+        	console.log ("I am a " + this.name + " I can fly");
+        }
+
+
+        function inherit(C, P) {
+            C.prototype = P.prototype;
+        }
+		inherit(Cat, Animal);
+
+        function Cat (name, age){
+        	Animal.apply(this,arguments);
+        }
+        
+        var cat1 = new Cat("cat", 5);
+        var duck = new Animal ("duck", 2) 
+
+        duck.swim();
+        duck.run();
+        duck.fly();
+
+        cat1.swim();
+        cat1.run();
+        cat1.fly();
+
+        console.log ("no no no...cat cant fly and swim...we must change something....")
+
+        Cat.prototype.swim = function (){
+        	console.log ("I am a " + this.name + " I cant swim");
+        }
+
+        Cat.prototype.fly = function (){
+        	console.log ("I am a " + this.name + " I cant fly");
+        }
+
+		duck.swim();
+        duck.run();
+        duck.fly();
+
+        cat1.swim();
+        cat1.run();
+        cat1.fly();
+
+        console.log ("oh fuck...I`m have some problem with my duck...")
+       
+    </script>
+</body>
+</html>

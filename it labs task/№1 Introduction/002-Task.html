@@ -1,0 +1,71 @@
+﻿<!--
+
+   Реализуйте функцию findUnique таким образом, чтобы она возвращала массив, 
+   состоящий из элементов исходного массива без повторений.
+
+    Прим. 
+      Для этого попробуйте использовать метод reduce().
+
+-->
+
+<html>
+<head>
+    <title>Интеграция JavaScript</title>
+
+    <script type="text/javascript">
+
+var arr3 = new Array();
+
+//Вариант №1
+function findUnique(arr) {
+  var c = 0;
+      arr.sort(); //сортировка массива по возрастанию 
+      arr.reduce(function(a,b,index,array){
+         if (a!==b){ //проверка на равенство соседних элементов
+            arr3.push(a); //если єлементы не равны заносим в результ. массив
+         }  
+          return b;
+       }) 
+arr3.forEach(function(item) {  //проверка на совпадение последнего элемента
+   if(item===arr[arr.length-1]){
+     c++;
+   }
+});
+if(c===0) {arr3.push(arr[arr.length-1])}; //если нет ни одного совпадение с результ. массивом заносим и его в результ. массив
+     document.write(arr3);   
+     return arr3; 
+    }     
+
+
+var initialArr = [1, 2, 3, 1, 5, 3, 4, 1];
+document.write(initialArr.sort()+"<br>"); 
+console.log("Initial array: " + initialArr);
+
+//Вариант №2
+  /*function findUnique(arr) {
+            var arr1=new Array();  
+            var arr2=arr;
+            arr2.sort();  //сортировка массива по возрастанию 
+            document.write(arr2+"<br>");
+            for (var i=0; i<(arr2.length-1);i++){ //берем каждый элемент массива и проходимся по этому же массиву
+                if(arr2[i]===arr2[i+1]){ //любые совпадение элементов обнуляем 
+                    arr2[i]=null;
+                } 
+             }
+             arr2=arr2.filter(function(value){ //фильтруем массив от null
+                return value!==null;
+            })
+          return arr2; //возвращаем результ. массив без совпадений
+  }*/
+       
+
+        var unique = findUnique(initialArr);
+        console.log("</br>");
+        console.log("Unique elements: " + unique);
+
+    </script>
+
+</head>
+<body>
+</body>
+</html>

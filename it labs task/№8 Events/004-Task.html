@@ -1,0 +1,86 @@
+﻿<!-- 
+
+    Реализуйте функцию-обработчик события onkeydown(стр. 53) таким образом, что при нажатии на 
+    стрелку вниз, вверх, влево или вправо автомобиль двигался по телу документа. 
+
+-->
+
+
+<html>
+<head>
+    <style>
+        #car {
+            width: 150px;
+            height: 150px;
+            background: url(images/car-down.png);
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="car" tabindex="-1"></div>
+
+    <script>
+        // Активация автомобиля.
+        document.getElementById('car').onclick = function () {
+            // Получаем координаты автомобиля
+            var coords = getCoords(this);
+            // Изменяем их на текущие. Таким образом можно будет получать left и top координаты элемента
+            this.style.left = coords.left + 'px';
+            this.style.top = coords.top + 'px';
+        };
+
+        // Функция getCoords возвращает объект, хранящий относительные координаты left и top элемента elem
+        function getCoords(elem) {
+            var box = elem.getBoundingClientRect();
+
+            var body = document.body;
+            var docElem = document.documentElement;
+
+            var scrollTop = window.pageYOffset || docElem.scrollTop || body.scrollTop;
+            var scrollLeft = window.pageXOffset || docElem.scrollLeft || body.scrollLeft;
+
+            var clientTop = docElem.clientTop || body.clientTop || 0;
+            var clientLeft = docElem.clientLeft || body.clientLeft || 0;
+
+            var top = box.top + scrollTop - clientTop;
+            var left = box.left + scrollLeft - clientLeft;
+
+            return { top: Math.round(top), left: Math.round(left) };
+        }
+
+        document.getElementById('car').onkeydown = function (e) {
+            var top = this.style.top.slice(0, -2);
+            var left = this.style.left.slice(0, -2);
+
+            if (e.keyCode == 40){
+                this.style.background = "url(images/car-down.png)";
+                top = +top +10;
+                this.style.top = top + "px";
+            }
+            else if (e.keyCode == 38){
+                this.style.background = "url(images/car-up.png)";
+                top = +top -10;
+                this.style.top = top + "px";
+            }
+            else if (e.keyCode == 39){
+                this.style.background = "url(images/car-right.png)";
+                left = +left +10;
+                this.style.left = left + "px";
+            }
+            else if (e.keyCode == 37){
+                this.style.background = "url(images/car-left.png)";
+                left = +left -10;
+                this.style.left = left + "px";
+            }
+
+           // console.log (e.keyCode);
+        
+        };
+
+
+    </script>
+
+</body>
+</html>

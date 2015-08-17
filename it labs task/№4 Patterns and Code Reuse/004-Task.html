@@ -1,0 +1,35 @@
+﻿<!-- 
+     Напишите пример, который доказывал бы, что при использовании шаблона "заимствование конструктора" не наследуются свойства прототипа родителя.
+-->
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <script>
+        function Man (name, surname,age){
+        	this.name = name;
+        	this.surname = surname;
+        	this.age = age;
+        	this.legs = 2;
+        	this.arms = 2;
+        	this.head = 1;
+        }
+        Man.prototype.shavingBeard = function (){
+
+        	console.log ("I`m shaving my beard");
+
+        }
+
+        function Woman (name, surname,age){
+        	Man.apply(this,arguments);
+        }
+
+        var man1 = new Man ("Vanya", "Ivanov", 25);
+        man1.shavingBeard();
+
+        var woman1 = new Woman ("Klava", "Ivanova", 24);
+        woman1.shavingBeard();
+    </script>
+</body>
+</html>
